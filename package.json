@@ -2,6 +2,7 @@
   "name": "luminscribe-blog-api",
   "version": "0.0.1",
   "description": "nestjs application",
+  "main": "./src/main.ts",
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "nest build",
@@ -94,7 +95,5 @@
   },
   "homepage": "https://github.com/tsdk/create-nestjs-app",
   "gitHead": "ac9072902aff8d26df5ab02f85f25af7d1b85bb8",
-  "module": "index.ts",
-  "type": "module",
   "private": true
 }
