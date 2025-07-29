@@ -20,15 +20,14 @@ constraint.
 
 ### 2.1 Recommended Technology Stack
 
-- **Runtime**: Bun (v1.0+) - Fast JavaScript runtime with built-in bundler, test
-  runner, and package manager
-- **Framework**: NestJS with TypeScript - Enterprise-grade framework with
-  built-in DTOs, validation, and dependency injection
-- **Database**: PostgreSQL with Prisma ORM
-- **Validation**: class-validator + class-transformer (NestJS ecosystem)
-- **Testing**: Bun's built-in test runner + Supertest
-- **Documentation**: NestJS Swagger integration (@nestjs/swagger)
-- **Containerization**: Docker + Docker Compose
+- **Runtime**: [Bun](https://bun.sh/) (v1.0+) - Fast JavaScript runtime with built-in bundler, test runner, and package manager
+- **Framework**: [NestJS](https://nestjs.com/) with TypeScript - Enterprise-grade framework with built-in DTOs, validation, and dependency injection
+- **Database**: [Neon PostgreSQL](https://neon.tech/) with [Prisma ORM](https://www.prisma.io/)
+- **Validation**: [class-validator](https://github.com/typestack/class-validator) + [class-transformer](https://github.com/typestack/class-transformer) (NestJS ecosystem)
+- **Testing**: [Jest](https://jestjs.io/) + [Supertest](https://github.com/visionmedia/supertest)
+- **Documentation**: [NestJS Swagger integration](https://docs.nestjs.com/openapi/introduction) (@nestjs/swagger)
+- **Containerization**: [Docker](https://www.docker.com/)
+- **Deployment Platform**: [Render](https://render.com/)
 
 ### 2.2 Technology Stack Benefits
 
@@ -303,35 +302,36 @@ src/
 
 ### 6.2 Development Phases (4-hour constraint)
 
-#### Phase 1 (60 minutes): Project Setup & Core Infrastructure
+#### Phase 1 (Completed): Project Setup & Core Infrastructure
 
-- Initialize Bun project with NestJS CLI: `bun create nestjs-app blogging-api`
-- Set up PostgreSQL with Docker Compose
-- Configure Prisma schema and migrations
-- Set up NestJS modules (PostsModule, CommentsModule)
-- Configure global validation pipe and exception filters
+- ✅ Initialized Bun project with NestJS CLI.
+- ✅ Set up PostgreSQL with Neon DB (replaced Docker Compose for production).
+- ✅ Configured Prisma schema and migrations.
+- ✅ Set up NestJS modules (PostsModule, CommentsModule).
+- ✅ Configured global validation pipe and exception filters.
 
-#### Phase 2 (90 minutes): Core API Implementation
+#### Phase 2 (Completed): Core API Implementation
 
-- Create DTOs with class-validator decorators
-- Implement PrismaService for database access
-- Build PostsService and CommentsService with business logic
-- Create controllers with proper decorators (@Get, @Post, @Body, @Param)
-- Add Swagger documentation with @ApiProperty decorators
+- ✅ Created DTOs with class-validator decorators.
+- ✅ Implemented PrismaService for database access.
+- ✅ Built PostsService and CommentsService with business logic.
+- ✅ Created controllers with proper decorators (@Get, @Post, @Body, @Param).
+- ✅ Added Swagger documentation with @ApiProperty decorators.
 
-#### Phase 3 (60 minutes): Testing & Documentation
+#### Phase 3 (Completed): Testing & Documentation
 
-- Write unit tests using Bun's built-in test runner
-- Add integration tests for controllers
-- Configure automatic API documentation generation
-- Implement global error handling and logging
+- ✅ Wrote unit tests for services.
+- ✅ Added integration tests for controllers.
+- ✅ Configured automatic API documentation generation.
+- ✅ Implemented global error handling and logging.
 
-#### Phase 4 (30 minutes): Polish & Deployment
+#### Phase 4 (In Progress): Polish & Deployment
 
-- Docker containerization with multi-stage builds
-- Add health check endpoint
-- README documentation with Bun-specific setup instructions
-- Final testing and performance validation
+- ✅ Docker containerization with multi-stage builds.
+- ✅ Updated README documentation with Bun-specific setup instructions.
+- ⬜ Deploying to Render.
+- ⬜ Add health check endpoint.
+- ⬜ Final testing and performance validation.
 
 ## 7. Best Practices to Follow
 

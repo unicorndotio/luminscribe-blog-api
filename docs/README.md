@@ -1,22 +1,3 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
-</p>
-
-<p align="center">A progressive <a href="http://nodejs.org" target="blank">Node.js</a> framework for building efficient and scalable server-side applications, heavily inspired by <a href="https://angular.io" target="blank">Angular</a>.</p>
-<p align="center">
-<a href="https://www.npmjs.com/~nestjscore"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore"><img src="https://img.shields.io/npm/dm/@nestjs/core.svg" alt="NPM Downloads" /></a>
-<a href="https://travis-ci.org/nestjs/nest"><img src="https://api.travis-ci.org/nestjs/nest.svg?branch=master" alt="Travis" /></a>
-<a href="https://travis-ci.org/nestjs/nest"><img src="https://img.shields.io/travis/nestjs/nest/master.svg?label=linux" alt="Linux" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master"><img src="https://coveralls.io/repos/github/nestjs/badge.svg?branch=master#5" alt="Coverage" /></a>
-<a href="https://gitter.im/nestjs/nestjs?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=body_badge"><img src="https://badges.gitter.im/nestjs/nestjs.svg" alt="Gitter" /></a>
-<a href="https://opencollective.com/nest#backer"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec"><img src="https://img.shields.io/badge/Donate-PayPal-dc3d53.svg"/></a>
-  <a href="https://twitter.com/nestframework"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-
 # Luminscribe Blog API
 
 ## Project Overview
@@ -33,14 +14,15 @@ This is a production-ready RESTful API for a simple blogging platform that manag
 
 ## Technology Stack
 
-- **Runtime**: Bun (v1.0+)
-- **Framework**: NestJS with TypeScript
-- **Database**: PostgreSQL
-- **ORM**: Prisma
-- **Validation**: `class-validator` + `class-transformer`
-- **Testing**: Jest (Unit & E2E)
-- **Documentation**: `@nestjs/swagger`
-- **Containerization**: Docker + Docker Compose
+- **Runtime**: [Bun](https://bun.sh/) (v1.0+)
+- **Framework**: [NestJS](https://nestjs.com/) with TypeScript
+- **Database**: [Neon PostgreSQL](https://neon.tech/) (v13+)
+- **ORM**: [Prisma](https://www.prisma.io/) (v6.13+)
+- **Validation**: [class-validator](https://github.com/typestack/class-validator) + [class-transformer](https://github.com/typestack/class-transformer)
+- **Testing**: [Jest](https://jestjs.io/) (Unit & E2E)
+- **API Documentation**: [@nestjs/swagger](https://docs.nestjs.com/openapi/introduction)
+- **Containerization**: [Docker](https://www.docker.com/)
+- **Deployment Platform**: [Render](https://render.com/)
 
 ## Getting Started
 
@@ -65,29 +47,24 @@ This is a production-ready RESTful API for a simple blogging platform that manag
     bun install
     ```
 
-3.  **Set up the database with Docker Compose:**
+### Set up the database
 
-    ```bash
-    docker-compose up -d
-    ```
+This project uses [Neon](https://neon.tech/) for its PostgreSQL database. You will need to create a Neon account and a new project to obtain your database connection strings.
 
-    This will start a PostgreSQL container. The database credentials are:
-    -   **User**: `user`
-    -   **Password**: `password`
-    -   **Database**: `luminscribe_blog`
+1.  **Obtain Connection Strings**: From your Neon project dashboard, get both the **pooled** and **direct** connection strings.
 
-4.  **Configure Prisma and run migrations:**
-
-    The `.env` file should already be configured with the database URL. If not, create a `.env` file in the project root with the following content:
+2.  **Configure `.env`**: Create a `.env` file in the project root (or copy from `.env.example`) and add your Neon connection strings:
 
     ```
-    DATABASE_URL="postgresql://user:password@localhost:5432/luminscribe_blog?schema=public"
+    DATABASE_URL="your_pooled_neon_connection_string"
+    DIRECT_URL="your_direct_neon_connection_string"
     ```
 
-    Then, run the Prisma migrations to create the database tables:
+3.  **Run Prisma Migrations and Seed (if needed)**:
 
     ```bash
     bunx prisma migrate dev --name init
+    bun run db:seed # To seed the database with sample data
     ```
 
     And generate the Prisma client:
@@ -105,6 +82,30 @@ bun start:dev
 ```
 
 The API will be accessible at `http://localhost:3000/api`.
+
+### Docker Deployment
+
+This application can be deployed using Docker. The Docker image is available on Docker Hub:
+
+[danelux/luminscribe-blog-api](https://hub.docker.com/r/danelux/luminscribe-blog-api)
+
+To build the Docker image locally:
+
+```bash
+bun run docker:build
+```
+
+To run the Docker image locally:
+
+```bash
+bun run docker:run
+```
+
+To push the Docker image to Docker Hub (after logging in):
+
+```bash
+bun run docker:push
+```
 
 ### API Documentation (Swagger)
 
