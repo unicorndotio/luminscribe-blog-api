@@ -1,5 +1,5 @@
 # Use a Node.js base image
-FROM oven/bun:1.1.18-slim as base
+FROM oven/bun:1.1.18-slim AS base
 
 # Set working directory
 WORKDIR /usr/src/app
