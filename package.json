@@ -21,7 +21,7 @@
     "prisma:migrate:dev": "bunx prisma migrate dev",
     "prisma:generate": "bunx prisma generate",
     "db:seed": "bunx prisma db seed",
-    "docker:build": "docker build -t luminscribe-blog-api .",
+    "docker:build": "bun install && docker build -t luminscribe-blog-api .",
     "docker:run": "docker run -p 3000:3000 luminscribe-blog-api",
     "docker:push": "docker push danelux/luminscribe-blog-api:latest"
   },
