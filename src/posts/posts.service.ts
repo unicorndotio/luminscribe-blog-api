@@ -7,7 +7,7 @@ export class PostsService {
   constructor(private prisma: PrismaService) {}
 
   async create(createPostDto: CreatePostDto) {
-    return this.prisma.blogPost.create({ data: createPostDto });
+    return this.prisma.blogPost.create({ data: createPostDto, include: { comments: true } });
   }
 
   async findAll() {

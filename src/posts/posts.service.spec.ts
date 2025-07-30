@@ -39,7 +39,7 @@ describe('PostsService', () => {
 
       const result = await service.create(createPostDto);
       expect(result).toEqual(expectedPost);
-      expect(prisma.blogPost.create).toHaveBeenCalledWith({ data: createPostDto });
+      expect(prisma.blogPost.create).toHaveBeenCalledWith({ data: createPostDto, include: { comments: true } });
     });
   });
 
